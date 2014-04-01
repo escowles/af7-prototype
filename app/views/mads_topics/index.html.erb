@@ -1,0 +1,15 @@
+<h1>MADS Schemes</h1>
+
+<div class="span6">
+  <ul>
+    <% @document.each do |doc|
+       @title = doc['name_tesim']
+       @title = @title.first if @title.kind_of?(Array) %>
+      <li><%= link_to @title, mads_topic_path(doc) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <%= link_to "Create MADS Scheme", new_mads_topic_path, :class => 'btn btn-primary'%>
+</div>

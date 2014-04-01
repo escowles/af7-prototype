@@ -1,0 +1,20 @@
+<h1>Create a new MADS Topic</h1>
+<%= form_for @mads_topic do |f| %>
+  <%= label_tag 'mads_topic[name]', "Name" %>
+  <%= text_field_tag 'mads_topic[name]' %>
+  <br>
+
+  <%= label_tag 'mads_topic[elementList_attributes][][topicElement_attributes][][elementValue]', "Topic Element" %>
+  <%= text_field_tag 'mads_topic[elementList_attributes][][topicElement_attributes][][elementValue]' %>
+  <br>
+
+  <%= label_tag 'mads_topic[externalAuthority]', "Authority" %>
+  <%= text_field_tag 'mads_topic[externalAuthority]' %>
+  <br>
+
+  <%= label_tag 'mads_topic[scheme]', "Scheme" %>
+  <%= select_tag 'mads_topic[scheme]', options_for_select(@mads_schemes), {:include_blank => 'Select Scheme'} %>
+  <br>
+
+  <%=f.submit "Create", class: "btn btn-primary" %>
+<%end%>
