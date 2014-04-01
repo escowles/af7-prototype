@@ -1,6 +1,4 @@
-class MadsScheme < ActiveFedora::Rdf::Resource
-  configure type: MADS.MADSScheme
-  property :name, predicate: RDF::RDFS.label
-  property :code, predicate: DAMS.code
-  property :externalAuthority, predicate: MADS.hasExactExternalAuthority
+class MadsScheme < ActiveFedora::Base
+  has_metadata :name => "damsMetadata", :type => MadsSchemeDatastream
+  has_attributes :name, :code, :externalAuthority, datastream: 'damsMetadata', multiple: false
 end

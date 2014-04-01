@@ -1,0 +1,18 @@
+<%
+  name = render_document_show_field_value(:document=>@document, :field=>"name_tesim")
+  code = render_document_show_field_value(:document=>@document, :field=>"code_tesim")
+  auth = render_document_show_field_value(:document=>@document, :field=>"externalAuthority_tesim")
+%>
+<% @page_title =  "MADS Scheme | #{name}" %>
+<div class="row-fluid">
+  <div id="content">
+    <p>name: <%= name %></p>
+    <p>code: <%= code %></p>
+    <p>auth: <%= auth %></p>
+  </div>
+
+  <p><strong>Editor Tools</strong></p>
+  <ul>
+    <li><%= link_to "Edit", edit_mads_scheme_path(@document['id']) %>
+  </ul>
+</div>

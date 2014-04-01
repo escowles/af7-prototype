@@ -1,0 +1,11 @@
+<h1>Edit MADS Scheme</h1>
+<%= form_for @mads_scheme do |f| %>
+  <%= label_tag 'mads_scheme[name]', "Name" %><%= text_field_tag 'mads_scheme[name][]', @mads_scheme.name %>
+  <br>
+  <%= label_tag 'mads_scheme[code]', "Code" %><%= text_field_tag 'mads_scheme[code][]', @mads_scheme.code %>
+  <br>
+  <%= label_tag 'mads_scheme[externalAuthority]', "Authority" %><%= text_field_tag 'mads_scheme[externalAuthority][]', @mads_scheme.externalAuthority.rdf_subject %>
+  <br>
+  <%=f.submit "Save", class: "btn btn-primary" %>
+  <%= link_to "Cancel", mads_scheme_path(@mads_scheme), class: "btn btn-primary" %>
+<%end%>
