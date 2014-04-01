@@ -1,4 +1,5 @@
 class MadsTopicDatastream < ActiveFedora::RdfxmlRDFDatastream
+  include Dams::ModelMethods
 
   resource_class.configure type: MADS.Topic
   resource_class.configure base_uri: "http://library.ucsd.edu/ark:/20775/"
@@ -25,13 +26,4 @@ class MadsTopicDatastream < ActiveFedora::RdfxmlRDFDatastream
     solr_doc
   end
 
-  def linkify( predicate, val )
-    if !val.first.blank? && val.first.class == String
-      s = graph.first( [rdf_subject,predicate,nil] )
-      if !s.nil? && s.object.literal?
-        graph.delete( s )
-        graph.insert( [rdf_subject, predicate, RDF::Resource.new(s.object)] )
-      end
-    end
-  end
 end

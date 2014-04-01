@@ -1,6 +1,6 @@
-<h1>MADS Schemes</h1>
+<h1>MADS Topics</h1>
 
-<div class="span6">
+<div>
   <ul>
     <% @document.each do |doc|
        @title = doc['name_tesim']
@@ -11,5 +11,5 @@
 </div>
 
 <div>
-  <%= link_to "Create MADS Scheme", new_mads_topic_path, :class => 'btn btn-primary'%>
+  <%= link_to "Create MADS Topics", new_mads_topic_path, :class => 'btn btn-primary'%>
 </div>
