@@ -3,10 +3,10 @@ require 'spec_helper'
 describe MadsSchemesController do
   describe "Show" do
     before do
-      @obj = MadsScheme.create(code: "test", name: "Test Scheme", externalAuthority: 'http://test.com/1')
+      @scheme_obj = MadsScheme.create(code: "test", name: "Test Scheme", externalAuthority: 'http://test.com/1')
     end
     it "should be successful" do 
-      get :show, id: @obj.id
+      get :show, id: @scheme_obj.id
       response.should be_successful 
     end
   end
@@ -21,14 +21,14 @@ describe MadsSchemesController do
     
   describe "Edit" do
     before do
-      @obj = MadsScheme.create(code: "test", name: "Test Scheme", externalAuthority: 'http://example.com/1')
+      @scheme_obj = MadsScheme.create(code: "test", name: "Test Scheme", externalAuthority: 'http://example.com/1')
     end    
     it "should be successful" do 
-      get :edit, id: @obj.id
+      get :edit, id: @scheme_obj.id
       response.should be_successful 
       @newobj = assigns[:mads_scheme]
-      @newobj.code.should == @obj.code
-      @newobj.name.should == @obj.name
+      @newobj.code.should == @scheme_obj.code
+      @newobj.name.should == @scheme_obj.name
     end
   end
     
@@ -44,11 +44,11 @@ describe MadsSchemesController do
     
   describe "Update" do
     before do
-      @obj = MadsScheme.create(code: "test", name: "Test Scheme", externalAuthority: 'http://example.com/1')
+      @scheme_obj = MadsScheme.create(code: "test", name: "Test Scheme", externalAuthority: 'http://example.com/1')
     end
     it "should be successful" do
-      put :update, :id => @obj.id, :mads_scheme => {code: ["test2"], name: ["Test Scheme 2"], externalAuthority: ['http://example.com/2']}
-      response.should redirect_to mads_scheme_path @obj.id
+      put :update, :id => @scheme_obj.id, :mads_scheme => {code: ["test2"], name: ["Test Scheme 2"], externalAuthority: ['http://example.com/2']}
+      response.should redirect_to mads_scheme_path @scheme_obj.id
       @newobj = assigns[:mads_scheme]
       @newobj.name.should == "Test Scheme 2"
       @newobj.code.should == "test2"

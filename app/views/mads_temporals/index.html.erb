@@ -1,0 +1,15 @@
+<h1>MADS Temporals</h1>
+
+<div>
+  <ul>
+    <% @document.each do |doc|
+       @title = doc['name_tesim']
+       @title = @title.first if @title.kind_of?(Array) %>
+      <li><%= link_to @title, mads_temporal_path(doc) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <%= link_to "Create MADS Temporals", new_mads_temporal_path, :class => 'btn btn-primary'%>
+</div>

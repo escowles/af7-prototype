@@ -1,0 +1,16 @@
+<%
+  name = render_document_show_field_value(:document=>@document, :field=>"name_tesim")
+  auth = render_document_show_field_value(:document=>@document, :field=>"externalAuthority_tesim")
+%>
+<% @page_title =  "MADS Temporal | #{name}" %>
+<div class="row-fluid">
+  <div id="content">
+    <p>name: <%= name %></p>
+    <p>auth: <%= auth %></p>
+  </div>
+
+  <p><strong>Editor Tools</strong></p>
+  <ul>
+    <li><%= link_to "Edit", edit_mads_temporal_path(@document['id']) %>
+  </ul>
+</div>

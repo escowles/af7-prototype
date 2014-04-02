@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe MadsTopic do
+describe "MadsTopic" do
   it "should generate RDF" do
-    topic_params = {
+    @topic_params = {
       name: 'Civilization, Modern',
       externalAuthority: RDF::Resource.new('http://id.loc.gov/authorities/subjects/sh85026469'),
       elementList_attributes: [{
@@ -10,9 +10,9 @@ describe MadsTopic do
       }],
       scheme: RDF::Resource.new('http://library.ucsd.edu/ark:20775/bb1111111x')
     }
-    topic = MadsTopic.new(pid: 'http://library.ucsd.edu/ark:20775/bb2222222x')
-    topic.attributes = topic_params
-    xml =<<END
+    @topic = MadsTopic.new(pid: 'http://library.ucsd.edu/ark:20775/bb2222222x')
+    @topic.attributes = @topic_params
+    @topic_xml =<<TOPIC_XML
 <?xml version='1.0' encoding='utf-8' ?>
 <rdf:RDF xmlns:mads='http://www.loc.gov/mads/rdf/v1#'
          xmlns:dams='http://library.ucsd.edu/ontology/dams#'
@@ -29,8 +29,8 @@ describe MadsTopic do
     <mads:isMemberOfMADSScheme rdf:resource='http://library.ucsd.edu/ark:20775/bb1111111x' />
   </mads:Topic>
 </rdf:RDF>
-END
-    topic.damsMetadata.content.should be_equivalent_to(xml).ignoring_attr_values
+TOPIC_XML
+    @topic.damsMetadata.content.should be_equivalent_to(@topic_xml).ignoring_attr_values
     # not a perfect solution (since there are some important attr values, but otherwise nodeID
     # makes this fail
   end
